@@ -18,6 +18,9 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
 
+    // FPS
+    int FPS = 60;
+
     // Set player's default position
     int playerX = 100;
     int playerY = 100;
@@ -39,9 +42,28 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void run() {
 
+        double drawInterval = 1000000000.00 / FPS; // 1 second / FPS = 0.1666 seconds
+        double nextDrawTime = System.nanoTime() + drawInterval;
+
         while (gameThread != null) {
             update();
             repaint();
+
+            try {
+                double remainingTime = nextDrawTime - System.nanoTime();
+                remainingTime /= 1000000; // Transforming nano to millisecond
+
+                if(remainingTime < 0) {
+                    remainingTime = 0;
+                }
+
+                Thread.sleep((long) remainingTime);
+
+                nextDrawTime += drawInterval;
+
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
