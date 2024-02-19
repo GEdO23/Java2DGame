@@ -18,6 +18,11 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
 
+    // Set player's default position
+    int playerX = 100;
+    int playerY = 100;
+    int playerSpeed = 4;
+
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
@@ -41,6 +46,15 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
+        if (keyH.upPressed) {
+            playerY -= playerSpeed;
+        } else if (keyH.downPressed) {
+            playerY += playerSpeed;
+        } else if (keyH.leftPressed) {
+            playerX -= playerSpeed;
+        } else if (keyH.rightPressed) {
+            playerX += playerSpeed;
+        }
 
     }
 
@@ -49,7 +63,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D)g;
         g2.setColor(Color.white);
-        g2.fillRect(100, 100, tileSize, tileSize);
+        g2.fillRect(playerX, playerY, tileSize, tileSize);
         g2.dispose(); // Good practice to save memory
 
     }
