@@ -1,8 +1,7 @@
 package main;
 
 import javax.swing.JPanel;
-import java.awt.Dimension;
-import java.awt.Color;
+import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -32,5 +31,17 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void run() {
 
+        while (gameThread != null) {
+            update();
+            repaint();
+        }
+    }
+
+    public void update() {
+
+    }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
     }
 }
