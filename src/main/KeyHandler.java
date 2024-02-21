@@ -16,7 +16,7 @@ public class KeyHandler implements KeyListener {
         int code = e.getKeyCode();
 
         switch (code) {
-            case KeyEvent.VK_UP, KeyEvent.VK_W:
+            case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_SPACE:
                 upPressed = true;
                 break;
             case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_X:
