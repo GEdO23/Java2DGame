@@ -1,18 +1,18 @@
 package entity;
 
 import main.GamePanel;
+import main.Image;
 import main.KeyHandler;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Objects;
 
 public class Player extends Entity{
 
     GamePanel gp;
     KeyHandler keyH;
+    Image image;
 
 
     public Player(GamePanel gp, KeyHandler keyH) {
@@ -28,22 +28,18 @@ public class Player extends Entity{
         direction = Direction.DOWN;
     }
 
-    private BufferedImage getImage(String path) throws IOException {
-        return ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(path)));
-    }
-
     public void getPlayerImage() {
 
         try {
 
-            up1 = getImage("/player/player_up1.png");
-            up2 = getImage("/player/player_up2.png");
-            down1 = getImage("/player/player_down1.png");
-            down2 = getImage("/player/player_down2.png");
-            left1 = getImage("/player/player_left1.png");
-            left2 = getImage("/player/player_left2.png");
-            right1 = getImage("/player/player_right1.png");
-            right2 = getImage("/player/player_right2.png");
+            up1 = image.getImage("/player/player_up1.png");
+            up2 = image.getImage("/player/player_up2.png");
+            down1 = image.getImage("/player/player_down1.png");
+            down2 = image.getImage("/player/player_down2.png");
+            left1 = image.getImage("/player/player_left1.png");
+            left2 = image.getImage("/player/player_left2.png");
+            right1 = image.getImage("/player/player_right1.png");
+            right2 = image.getImage("/player/player_right2.png");
 
         } catch (IOException e) {
             e.printStackTrace();
