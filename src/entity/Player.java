@@ -52,6 +52,7 @@ public class Player extends Entity{
     }
 
     public void update() {
+
         if (keyH.upPressed) {
             direction = Direction.UP;
             y -= speed;
@@ -66,10 +67,12 @@ public class Player extends Entity{
             x += speed;
         }
 
-        spriteCounter++;
-        if(spriteCounter > 8) {
-            spriteNum = spriteNum == 1 ? 2 : 1;
-            spriteCounter = 0;
+        if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
+            spriteCounter++;
+            if(spriteCounter > 8) {
+                spriteNum = spriteNum == 1 ? 2 : 1;
+                spriteCounter = 0;
+            }
         }
 
     }
