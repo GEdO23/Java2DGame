@@ -65,22 +65,24 @@ public class Player extends Entity{
             direction = Direction.RIGHT;
             x += speed;
         }
+
+        spriteCounter++;
+        if(spriteCounter > 8) {
+            spriteNum = spriteNum == 1 ? 2 : 1;
+            spriteCounter = 0;
+        }
+
     }
     public void draw(Graphics g2) {
 
         getPlayerImage();
 
-        BufferedImage image = null;
-
-        switch (direction) {
-            case UP -> image = up1;
-            case DOWN -> image = down1;
-            case LEFT -> image = left1;
-            case RIGHT -> image = right1;
-        }
-
-//        g2.setColor(Color.white);
-//        g2.fillRect(x, y, gp.tileSize, gp.tileSize);
+        BufferedImage image = switch (direction) {
+            case UP -> spriteNum == 1 ? up1 : up2;
+            case DOWN -> spriteNum == 1 ? down1 : down2;
+            case LEFT -> spriteNum == 1 ? left1 : left2;
+            case RIGHT -> spriteNum == 1 ? right1 : right2;
+        };
 
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
     }
