@@ -1,6 +1,7 @@
 package tile;
 
 import main.GamePanel;
+import main.ImageReader;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -31,13 +32,13 @@ public class TileManager {
         try {
 
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/tile_floor.png")));
+            tile[0].image = ImageReader.readImage("/tiles/tile_floor.png");
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/tile_wall.png")));
+            tile[1].image = ImageReader.readImage("/tiles/tile_wall.png");
 
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/tile_water.png")));
+            tile[2].image = ImageReader.readImage("/tiles/tile_water.png");
 
         } catch (IOException e) {
             e.printStackTrace();

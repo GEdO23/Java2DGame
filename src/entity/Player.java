@@ -1,6 +1,7 @@
 package entity;
 
 import main.GamePanel;
+import main.ImageReader;
 import main.KeyHandler;
 
 import javax.imageio.ImageIO;
@@ -30,14 +31,14 @@ public class Player extends Entity{
     public void getPlayerImage() {
         try {
 
-            up1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_up1.png")));
-            up2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_up2.png")));
-            down1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_down1.png")));
-            down2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_down2.png")));
-            left1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_left1.png")));
-            left2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_left2.png")));
-            right1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_right1.png")));
-            right2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_right2.png")));
+            up1 = ImageReader.readImage("/player/player_up1.png");
+            up2 = ImageReader.readImage("/player/player_up2.png");
+            down1 = ImageReader.readImage("/player/player_down1.png");
+            down2 = ImageReader.readImage("/player/player_down2.png");
+            left1 = ImageReader.readImage("/player/player_left1.png");
+            left2 = ImageReader.readImage("/player/player_left2.png");
+            right1 = ImageReader.readImage("/player/player_right1.png");
+            right2 = ImageReader.readImage("/player/player_right2.png");
 
         } catch (IOException e) {
             throw new RuntimeException(e);
