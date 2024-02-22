@@ -1,17 +1,17 @@
 package tile;
 
 import main.GamePanel;
-import main.Image;
 
+import javax.imageio.ImageIO;
 import java.io.IOException;
+import java.util.Objects;
 
 public class TileManager {
 
     GamePanel gp;
     Tile[] tile;
-    Image image;
 
-    public TileManager(GamePanel gp) {
+    public TileManager(GamePanel gp) throws IOException {
         this.gp = gp;
 
         tile = new Tile[10]; // Creating 10 kinds of tiles
@@ -19,20 +19,18 @@ public class TileManager {
         getTileImage();
     }
 
-    public void getTileImage() {
+    public void getTileImage() throws IOException {
 
         tile[0] = new Tile();
+        tile[0].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/tile_floor.png")));
+
         tile[1] = new Tile();
+        tile[2].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/tile_wall.png")));
+
         tile[2] = new Tile();
+        tile[2].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/tile_water.png")));
 
-        try {
-            tile[0].image = image.getImage("/tiles/tile_floor.png");
-            tile[1].image = image.getImage("/tiles/tile_wall.png");
-            tile[2].image = image.getImage("/tiles/tile_water.png");
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
     }
 }

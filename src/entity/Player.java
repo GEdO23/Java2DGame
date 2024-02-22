@@ -1,19 +1,18 @@
 package entity;
 
 import main.GamePanel;
-import main.Image;
 import main.KeyHandler;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Player extends Entity{
 
     GamePanel gp;
     KeyHandler keyH;
-    Image image;
-
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -29,20 +28,19 @@ public class Player extends Entity{
     }
 
     public void getPlayerImage() {
-
         try {
 
-            up1 = image.getImage("/player/player_up1.png");
-            up2 = image.getImage("/player/player_up2.png");
-            down1 = image.getImage("/player/player_down1.png");
-            down2 = image.getImage("/player/player_down2.png");
-            left1 = image.getImage("/player/player_left1.png");
-            left2 = image.getImage("/player/player_left2.png");
-            right1 = image.getImage("/player/player_right1.png");
-            right2 = image.getImage("/player/player_right2.png");
+            up1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_up1.png")));
+            up2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_up2.png")));
+            down1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_down1.png")));
+            down2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_down2.png")));
+            left1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_left1.png")));
+            left2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_left2.png")));
+            right1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_right1.png")));
+            right2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/player_right2.png")));
 
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
     }
